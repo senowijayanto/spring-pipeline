@@ -13,7 +13,12 @@ pipeline {
 
 		stage("Test") {
 			steps {
-				echo("Hello Test")
+				script {
+
+				}
+				echo("Start Test")
+				sh("./mvnw test")
+				echo("Finish Test")
 			}
 		}
 

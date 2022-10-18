@@ -4,12 +4,24 @@ pipeline {
 			label "agent1"
 		}
 	}
+
+	environment {
+		AUTHOR = "Seno Wijayanto"
+		EMAIL = "senowijayanto@gmail.com"
+	}
+
   stages {
 		stage("Prepare") {
+			environment {
+				APP = credentials("github-seno")
+			}
 			steps {
+				echo("Author ${AUTHOR}")
+				echo("Email ${EMAIL}")
 				echo("Start Job: ${env.JOB_NAME}")
 				echo("Start Build: ${env.BUILD_NUMBER}")
 				echo("Branch Name: ${env.BRANCH_NAME}")
+				sh('echo "App Password: $APP_PSW" > "rahasia.txt"')
 			}
 		}
 
